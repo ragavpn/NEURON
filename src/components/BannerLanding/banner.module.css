@@ -1,0 +1,52 @@
+.banner {
+  display: flex;
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+  align-items: center;
+  padding: 5px;
+  border-radius: 10px;
+  gap: 10px;
+  z-index: 10;
+  border: 3px solid rgba(255, 255, 255, 0.5019607843);
+}
+
+.divider {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.small {
+  width: 7px;
+  height: 18px;
+  border-radius: 23px;
+  opacity: 0.55;
+  background-color: #3D5DAE;
+}
+
+.large {
+  width: 7px;
+  height: 40px;
+  border-radius: 23px;
+  background-color: #3D5DAE;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 30px;
+}
+.content .title, .content .contentPrompt {
+  font-family: Poppins;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 28.5px;
+  letter-spacing: -0.07em;
+  text-align: center;
+}
+.content .title {
+  opacity: 0.48;
+}
+.content .contentPrompt {
+  font-size: 25px;
+}/*# sourceMappingURL=banner.module.css.map */

@@ -1,0 +1,48 @@
+.parent {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+}
+
+.bg, .fg, .color {
+  grid-area: 1/1;
+  width: 100vw;
+  height: 100vh;
+}
+
+.color {
+  opacity: 0.55;
+  background-color: #85B4DB;
+}
+
+.fg {
+  z-index: 2;
+  -webkit-backdrop-filter: blur(30px);
+          backdrop-filter: blur(30px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg {
+  z-index: 1;
+  background-image: url("/blobs_bg.png");
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  padding: 55px;
+  width: 100%;
+  justify-content: space-around;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -30%);
+}
+
+.NeuronLogo {
+  position: absolute;
+  top: 80px;
+}/*# sourceMappingURL=upload.module.css.map */

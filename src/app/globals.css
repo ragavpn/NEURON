@@ -20,4 +20,5 @@
 
 .bg {
   z-index: 2;
+  pointer-events: none;
 }/*# sourceMappingURL=globals.css.map */
