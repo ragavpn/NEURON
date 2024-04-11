@@ -1,0 +1,84 @@
+.container
+    display: grid
+
+.parent,.infos
+    width: 100vw
+    height: 100vh
+    grid-area: 1/1
+.parent
+    display: flex
+.infos
+    width: fit-content
+    height: fit-content
+    position: absolute
+    bottom: 50px
+    left: 250px
+.right,.left
+    width: 50%
+    height: 100vh
+.right
+    background-image: url("/bacteria.png")
+.left
+    display: flex
+    justify-content: flex-start
+    align-items: center
+
+    .content
+        padding-left: 80px
+
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: flex-start
+        gap: 50px
+
+        .text
+            font-family: Poppins
+            font-size: 22px
+            font-weight: 400
+            line-height: 33px
+            letter-spacing: -0.04em
+            text-align: left
+            width: 85%
+.button
+    display: flex
+    align-items: center
+    width: fit-content
+    gap: 30px
+    border-radius: 9px
+    border: 0.5px solid #6992C9
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25)
+    z-index: 5
+    .getStartedParent
+        display: flex
+        align-items: center
+        text-align: left
+        background: linear-gradient(91.2deg, #85B4DB 2.11%, #948AC4 97.31%)
+        box-shadow: 0px 4px 4px 0px #00000040
+        color: #FFFFFF
+        padding: 5px 15px
+        border-radius: 10px
+        gap: 25px
+
+        font-family: Poppins
+        font-size: 42px
+        font-weight: 300
+        line-height: 33px
+        letter-spacing: -0.07em
+
+    .getStarted,.promptText
+        font-family: Poppins
+        font-size: 22px
+        font-weight: 300
+        line-height: 33px
+        letter-spacing: -0.07em
+    .promptText
+        padding: 5px 35px
+.rightParent
+    position: absolute
+
+    width: fit-content
+    height: fit-content
+
+    bottom: 55px
+    right: 10px

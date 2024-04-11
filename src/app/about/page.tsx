@@ -1,5 +1,8 @@
-export default function App(){
-    return (<>
-        hi bc
-    </>);
+import styles from "./page.module.css";
+export default function About() {
+  return (
+    <>
+      <div></div>
+    </>
+  );
 }

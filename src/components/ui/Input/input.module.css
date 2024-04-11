@@ -1,0 +1,27 @@
+.searchBar {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.seacrhIcon {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 2;
+}
+
+.input {
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+  letter-spacing: 0em;
+  text-align: center;
+}/*# sourceMappingURL=input.module.css.map */

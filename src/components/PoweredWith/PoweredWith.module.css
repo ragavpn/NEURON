@@ -1,0 +1,38 @@
+.PoweredWith {
+  display: flex;
+  flex-direction: column;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  -webkit-backdrop-filter: blur(30px);
+          backdrop-filter: blur(30px);
+  border-radius: 23px;
+  border: 3px solid rgba(255, 255, 255, 0.5019607843);
+  padding: 15px;
+  gap: 20px;
+  width: 80%;
+}
+
+.title {
+  color: #000;
+  text-wrap: break-word;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 27px;
+  letter-spacing: -1.54px;
+}
+
+.Icons {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.icon {
+  width: -moz-fit-content;
+  width: fit-content;
+}/*# sourceMappingURL=PoweredWith.module.css.map */
