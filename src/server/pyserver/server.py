@@ -15,9 +15,7 @@ def run_model(image_path):
     image_path = 'src/server/pyserver/inputs'
     video_path = 'src/server/pyserver/inputs'
     model = load_model(model_path)
-    return_info(image_path, video_path, model)
-
-    return {"image_path": image_path, "result": "Some result for " + image_path}
+    return return_info(image_path, video_path, model)
 
 
 class ImageHandler(BaseHTTPRequestHandler):
