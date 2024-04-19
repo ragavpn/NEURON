@@ -2,7 +2,17 @@
 import Image from "next/image";
 import styles from "./card.module.css";
 import Dropzone from "react-dropzone";
-function handleFiles(acceptedFiles: any) {}
+function handleFiles(acceptedFiles: any) {
+  let fd = new FormData();
+  fd.append("file", acceptedFiles[0]);
+
+  fetch("http://localhost:4437/", {
+    method: "POST",
+    body: fd,
+  }).then((response) => {
+    console.log(response);
+  });
+}
 export default function Card({
   type,
   formats,
