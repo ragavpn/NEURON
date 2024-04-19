@@ -70,23 +70,6 @@ def compute_result(outputs):
     _,result = torch.max((outputs * weights).data, 1)
     return result
 
-model_path = './densenet169.pth'
-image_path = './inputs'
-video_path = './inputs'
-
-# Load the model
-model = load_model(model_path)
-
-# Process the images and videos
-image_outputs = process_images(image_path, model)
-video_outputs = process_videos(video_path, model)
-
-# Compute the result
-image_result = compute_result(image_outputs)
-video_result = compute_result(video_outputs)
-
-labels = ['Mildly Demented', 'Moderately Demented', 'Non Demented', 'Very Mildly Demented']
-
 def print_dementia_info(dementia_class):
     info = {
         2: {
@@ -160,29 +143,46 @@ def print_dementia_info(dementia_class):
     }
 
     if dementia_class not in info:
-        print("Invalid dementia class provided.")
-        return
+        return "Invalid dementia class provided."
 
     category_info = info[dementia_class]
 
-    print(f"Category: {category_info['category']}")
-    print(f"Description: {category_info['description']}")
-    print("\nMeasures to Take:")
-    for measure in category_info['measures_to_take']:
-        print(f"- {measure}")
-    print("\nWhat to Avoid:")
-    for avoid in category_info['what_to_avoid']:
-        print(f"- {avoid}")
-    print("\nWhom to Consult:")
-    for consult in category_info['whom_to_consult']:
-        print(f"- {consult}")
+    output = []
+    output.append(f"Category: {category_info['category']}")
+    output.append(f"Description: {category_info['description']}")
+    output.append("\nMeasures to Take:")
+    output.extend([f"- {measure}" for measure in category_info['measures_to_take']])
+    output.append("\nWhat to Avoid:")
+    output.extend([f"- {avoid}" for avoid in category_info['what_to_avoid']])
+    output.append("\nWhom to Consult:")
+    output.extend([f"- {consult}" for consult in category_info['whom_to_consult']])
 
-if (image_result != "No outputs found"):
-    print_dementia_info(image_result.item())
-else:
-    print("No image outputs found.")
+    return "\n".join(output)
 
-if (video_result != "No outputs found"):
-    print_dementia_info(video_result.item())
-else:
-    print("No video outputs found.")
+def return_info(image_path, video_path, model):
+    # Process the images and videos
+    image_outputs = process_images(image_path, model)
+    video_outputs = process_videos(video_path, model)
+
+    # Compute the result
+    image_result = compute_result(image_outputs)
+    video_result = compute_result(video_outputs)
+
+
+    if (image_result != "No outputs found"):
+        return print_dementia_info(image_result.item())
+
+    if (video_result != "No outputs found"):
+        return print_dementia_info(video_result.item())
+    else:
+        return "No outputs found."
+
+model_path = './densenet169.pth'
+image_path = './inputs'
+video_path = './inputs'
+
+# Load the model
+model = load_model(model_path)
+
+
+return_info(image_path, video_path, model)
