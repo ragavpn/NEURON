@@ -3,12 +3,20 @@ import os
 import cgi
 import json
 
+from runner import load_model
+from runner import return_info
 
 def run_model(image_path):
     # Example function to run model on image
     # Replace this with your actual function
     # This function should return some result based on the image
     # For demonstration, let's just return a placeholder result
+    model_path = 'src/server/pyserver/densenet169.pth'
+    image_path = 'src/server/pyserver/inputs'
+    video_path = 'src/server/pyserver/inputs'
+    model = load_model(model_path)
+    return_info(image_path, video_path, model)
+
     return {"image_path": image_path, "result": "Some result for " + image_path}
 
 
@@ -26,7 +34,7 @@ class ImageHandler(BaseHTTPRequestHandler):
             if 'file' not in form:
                 self.send_error(400, 'No file was uploaded')
                 return
-            inp_path = 'src/server/inputs'
+            inp_path = 'src/server/pyserver/inputs'
             # Get the file data
             file_item = form['file']
             print(file_item.filename)

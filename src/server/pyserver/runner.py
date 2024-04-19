@@ -182,7 +182,4 @@ image_path = './inputs'
 video_path = './inputs'
 
 # Load the model
-model = load_model(model_path)
 
-
-return_info(image_path, video_path, model)
