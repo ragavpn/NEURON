@@ -1,0 +1,58 @@
+.parent
+    display: grid
+    width: 100vw
+    height: 100vh
+.bg,.fg,.color
+    grid-area: 1/1
+    width: 100vw
+    height: 100vh
+.color
+    opacity: 0.55
+    background-color: #85B4DB
+.fg
+    z-index: 2
+    backdrop-filter: blur(30px)
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+.bg
+    z-index: 1
+    background-image: url("/blobs_bg.png")
+.NeuronLogo
+    position: absolute
+    top: 80px
+.res
+    display: flex
+    justify-content: space-around
+    align-items: center
+    transform: translateY(15%)
+
+    width: fit-content
+
+    border-radius: 44px
+    background: rgba(184, 216, 241, 0.30)
+    border: #85B4DB solid 5px
+    backdrop-filter: blur(54.599998474121094px)
+    padding: 20px 20px
+    max-width: 90vw
+.result
+    display: flex
+    flex-direction: column
+    gap: 10px
+    width: 50%
+    color: #000
+    font-family: Poppins
+    font-size: 22px
+    font-style: normal
+    font-weight: 300
+    line-height: normal
+    letter-spacing: -0.92px
+    .title
+        color: #000
+        font-family: Poppins
+        font-size: 42px
+        font-style: normal
+        font-weight: 300
+        line-height: normal
+        letter-spacing: -3.36px

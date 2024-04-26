@@ -12,23 +12,31 @@ warnings.filterwarnings("ignore")
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # Load the model and its weights
+
+
 def load_model(model_path):
     model = densenet169(pretrained=True)
     num_ftrs = model.classifier.in_features
     model.classifier = nn.Linear(num_ftrs, 4)
     model = model.to(device)
-    checkpoint = torch.load(model_path)
+    if (not torch.cuda.is_available()):
+        checkpoint = torch.load(model_path, map_location=torch.device('cpu'))
+    else:
+        checkpoint = torch.load(model_path)
     model.load_state_dict(checkpoint['model_state_dict'])
     model.eval()
     return model
 
 # Process images
+
+
 def process_images(folder_path, model):
     transform = transforms.Compose([
         transforms.Resize(256),
         transforms.CenterCrop(224),
         transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[
+                             0.229, 0.224, 0.225]),
     ])
 
     images = []
@@ -38,7 +46,7 @@ def process_images(folder_path, model):
             img = Image.open(img_path)
             img_t = transform(img)
             images.append(img_t.unsqueeze(0))
-    
+
     if len(images) == 0:
         return torch.tensor([])
     images = torch.cat(images)
@@ -47,6 +55,8 @@ def process_images(folder_path, model):
     return outputs
 
 # Process videos
+
+
 def process_videos(folder_path, model):
     outputs = []
     for filename in os.listdir(folder_path):
@@ -61,14 +71,17 @@ def process_videos(folder_path, model):
     return torch.stack(outputs)
 
 # Compute the result
+
+
 def compute_result(outputs):
     if len(outputs) == 0:
         return "No outputs found"
     weights = torch.tensor([0.25, 0.30, 0.15, 0.20])
     weights = weights / weights.sum()
     weights = weights.to(device)
-    _,result = torch.max((outputs * weights).data, 1)
+    _, result = torch.max((outputs * weights).data, 1)
     return result
+
 
 def print_dementia_info(dementia_class):
     info = {
@@ -146,18 +159,9 @@ def print_dementia_info(dementia_class):
         return "Invalid dementia class provided."
 
     category_info = info[dementia_class]
+    print(category_info)
+    return category_info
 
-    output = []
-    output.append(f"Category: {category_info['category']}")
-    output.append(f"Description: {category_info['description']}")
-    output.append("\nMeasures to Take:")
-    output.extend([f"- {measure}" for measure in category_info['measures_to_take']])
-    output.append("\nWhat to Avoid:")
-    output.extend([f"- {avoid}" for avoid in category_info['what_to_avoid']])
-    output.append("\nWhom to Consult:")
-    output.extend([f"- {consult}" for consult in category_info['whom_to_consult']])
-
-    return "\n".join(output)
 
 def return_info(image_path, video_path, model):
     # Process the images and videos
@@ -168,7 +172,6 @@ def return_info(image_path, video_path, model):
     image_result = compute_result(image_outputs)
     video_result = compute_result(video_outputs)
 
-
     if (image_result != "No outputs found"):
         return print_dementia_info(image_result.item())
 
@@ -176,10 +179,3 @@ def return_info(image_path, video_path, model):
         return print_dementia_info(video_result.item())
     else:
         return "No outputs found."
-
-model_path = './densenet169.pth'
-image_path = './inputs'
-video_path = './inputs'
-
-# Load the model
-

@@ -6,6 +6,7 @@ import json
 from runner import load_model
 from runner import return_info
 
+
 def run_model(image_path):
     # Example function to run model on image
     # Replace this with your actual function
@@ -47,7 +48,7 @@ class ImageHandler(BaseHTTPRequestHandler):
                 f.write(file_item.file.read())
             # Run model on the uploaded image
             result = run_model(filepath)
-
+            print(json.dumps(result).encode())
             # Send response with CORS headers
             self.send_response(200)
             self.send_cors_headers()
@@ -56,6 +57,9 @@ class ImageHandler(BaseHTTPRequestHandler):
             self.wfile.write(json.dumps(result).encode())
         except Exception as e:
             self.send_error(500, str(e))
+            self.send_cors_headers()
+            self.send_header('Content-type', 'application/json')
+            self.end_headers()
 
     def do_GET(self):
         self.send_response(200)
