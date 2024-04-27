@@ -36,4 +36,4 @@ yarn-error.log*
 next-env.d.ts
 *.css.map
 
-/src/server/inputs
+/src/server/pyserver/inputs

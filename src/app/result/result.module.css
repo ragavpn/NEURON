@@ -17,8 +17,7 @@
 
 .fg {
   z-index: 2;
-  -webkit-backdrop-filter: blur(30px);
-          backdrop-filter: blur(30px);
+  backdrop-filter: blur(30px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,13 +39,11 @@
   justify-content: space-around;
   align-items: center;
   transform: translateY(15%);
-  width: -moz-fit-content;
   width: fit-content;
   border-radius: 44px;
   background: rgba(184, 216, 241, 0.3);
   border: #85B4DB solid 5px;
-  -webkit-backdrop-filter: blur(54.5999984741px);
-          backdrop-filter: blur(54.5999984741px);
+  backdrop-filter: blur(54.5999984741px);
   padding: 20px 20px;
   max-width: 90vw;
 }
@@ -72,4 +69,6 @@
   font-weight: 300;
   line-height: normal;
   letter-spacing: -3.36px;
-}/*# sourceMappingURL=result.module.css.map */
+}
+
+/*# sourceMappingURL=result.module.css.map */
