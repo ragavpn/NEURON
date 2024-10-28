@@ -1,0 +1,9 @@
+torch 
+torchvision 
+torchaudio
+transformers
+pillow
+matplotlib
+numpy
+pandas
+Ipython
