@@ -101,7 +101,7 @@ The project includes a web interface built using **Next.js**, **Sass**, **Tailwi
 
 ### Running the Project
 
-This setup script ensures you have all required dependencies and then starts the project. Make sure to have an active internet connection.
+This setup script ensures you have all required dependencies and then starts the project. Make sure to have an active internet connection. Clone the repo and run the below commands in a terminal. The file /src/server/pyserver/runner.py contains the code for the ML model being run. The .pth file in the same directory are the saved weights and biases from when the model was trained.
 
 ```bash
 cd NEURON
